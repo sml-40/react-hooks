@@ -1,30 +1,16 @@
 import * as React from 'react';
+import List from './components/List';
+import Search from './components/Search';
 
-const welcome = {
-  greeting: 'Hey',
-  title: 'React',
-};
-
-function getTitle(title) {
-  return title;
-}
-
-const numbers = [1, 2, 3, 4, 5];
-
-const exponentialNumbers = numbers.map((number) => number * number);
-console.log(exponentialNumbers);
-
-function App() {
-  return (
+const App = () => (
     <div>
-      <h1>{getTitle('Hello World')}</h1>
-      <h1>{welcome.greeting}  {welcome.title}</h1>
-      <label htmlFor="search">Search: </label>
-      <input id="search" type="text" />
+      <h1>My Hacker Stories</h1>
+      <Search />
+
       <hr />
      
+      <List />
     </div>
   );
-}
 
 export default App
