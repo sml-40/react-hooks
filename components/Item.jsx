@@ -1,13 +1,12 @@
 const Item = (props) => (
   <li>
-    console.log('Item renders')
   <span>
     <a href={props.item.objectID}>{props.item.title}</a>
   </span>
   <span>{props.item.author}</span>
   <span>{props.item.num_comments}</span>
-  <span>{props. item.points}</span>
-  </li>
+  <span>{props.item.points}</span>
+    </li>
 );
 
 export default Item;
