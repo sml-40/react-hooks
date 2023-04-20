@@ -28,6 +28,23 @@ const App = () => {
     }
   ];
 
+  const words = [
+    'spray',
+    'limit',
+    'elite',
+    'exuberant',
+    'destruction',
+    'present',
+  ];
+
+  const filteredWords = words.filter((word) =>
+    word.includes('e')
+  );
+  console.log("Which word includes 'e'? ", filteredWords);
+
+  const wordlength = words.map((word) => word.length > 6);
+  console.log("is word length > 6? ", wordlength);
+
   //**Callback handler in a nutshell * /
   //** We pass a function from parent component (App) to child component (Search) */
   //** The child component (Search) executes the function (handleSearch) */
