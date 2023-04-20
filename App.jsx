@@ -6,6 +6,9 @@ const App = () => {
 
   console.log('App renders');
 
+  const [searchTerm, setSearchTerm] = React.useState('');
+
+
   const stories = [
     {
       title: 'React',
@@ -36,8 +39,13 @@ const App = () => {
   //** A - a callback handler gets introduced as Event Handler */
   const handleSearch = (event) => {
     //** D - and 'calls back' to the place it was introduced */
-    console.log(event.target.value);
+    // console.log(event.target.value);
+    setSearchTerm(event.target.value);
   }
+
+  const searchedStories = stories.filter((story) =>
+    story.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div>
@@ -47,7 +55,7 @@ const App = () => {
 
       <hr />
      
-      <List list={ stories } />
+      <List list={ searchedStories } />
     </div>
   );
 };
