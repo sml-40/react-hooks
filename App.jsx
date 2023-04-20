@@ -68,7 +68,7 @@ const App = () => {
     <div>
       <h1>My Hacker Stories</h1>
       {/* /* B - the callback handler gets passed as a prop to another component */}
-      <Search onSearch={ handleSearch } /> 
+      <Search search={ searchTerm } onSearch={ handleSearch } /> 
 
       <hr />
      
