@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 const Search = (props) => {
+  const { search, onSearch } = props;
 
   console.log('Search renders')
 
@@ -15,8 +16,8 @@ const Search = (props) => {
       <input
         id="search"
         type="text"
-        value={props.search}
-        onChange={props.onSearch} />
+        value={search}
+        onChange={onSearch} />
       {/* <p>Search Term: <strong>{searchTerm}</strong></p> */}
     </div>
   );
