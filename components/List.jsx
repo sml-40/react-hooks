@@ -26,9 +26,17 @@ const List = ({ list }) => (
      
     <ul>
     {list.map((item) => (
-      <Item key={item.objectID} item={item} />
-    ))}
-        
-    </ul>
-  );
+      //** Variation 2: Spread and Rest Operators - clutter in list comnponent, only slightly less cluttered in Item Component*/
+      <Item
+        key={item.objectID}
+        title={item.title}
+        url={item.url}
+        author={item.author}
+        num_comments={item.num_comments}
+        points={item.points}
+      />
+    ))}        
+  </ul>
+);
+  
 export default List;
