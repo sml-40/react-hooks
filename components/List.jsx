@@ -23,18 +23,19 @@ import Item from "./Item";
 const List = ({ list }) => (
   // console.log('List renders');
   // return (
-     
+     //** Here, the rest operator is used to destructure objectID from the rest of the item object */
+     //** Then the item is spread with its key value pairsinto the item component */
     <ul>
-    {list.map((item) => (
+    {list.map(({ objectID, ...item }) => (
       //** Variation 2: Spread and Rest Operators - clutter in list comnponent, only slightly less cluttered in Item Component*/
-      <Item
-        key={item.objectID}
-        title={item.title}
-        url={item.url}
-        author={item.author}
-        num_comments={item.num_comments}
-        points={item.points}
-      />
+      //** Variation 2, step 2: JS Spread operator - declutter, more concise */
+      <Item key={item.objectID} {...item} />
+
+        // title={item.title}
+        // url={item.url}
+        // author={item.author}
+        // num_comments={item.num_comments}
+        // points={item.points}
     ))}        
   </ul>
 );
