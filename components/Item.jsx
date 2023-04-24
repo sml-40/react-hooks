@@ -1,21 +1,15 @@
 //** Nested destructuring */
 
-const Item = ({
+const Item = ({ item  }) => (
   // item: { //** Variation 2: Spread and Rest Operators - item component slightly more concise but the clutter is in the List Component*/
-    title,
-    url,
-    author,
-    num_comments,
-    points,
-  },
-) => (
+
   <li>
   <span>
-    <a href={url}>{title}</a>
+    <a href={item.url}>{item.title}</a>
   </span>
-  <span>{author}</span>
-  <span>{num_comments}</span>
-  <span>{points}</span>
+  <span>{item.author}</span>
+  <span>{item.num_comments}</span>
+  <span>{item.points}</span>
     </li>
 );
 
