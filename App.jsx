@@ -3,9 +3,9 @@ import List from './components/List';
 import Search from './components/Search';
 
 //** Custom Hook */
-const useStorageState = () => {
+const useStorageState = (initialState) => {
   const [searchTerm, setSearchTerm] = React.useState(
-    localStorage.getItem('search') || ''
+    localStorage.getItem('search') || initialState
   );
 
   //** React useEffect Hook */
@@ -13,6 +13,8 @@ const useStorageState = () => {
     //** Here we use the local storage to store the search term */
     localStorage.setItem('search', searchTerm);
   }, [searchTerm]);
+
+  return [searchTerm, setSearchTerm];
 };
   
 
