@@ -6,7 +6,10 @@ const App = () => {
 
   console.log('App renders');
 
-  const [searchTerm, setSearchTerm] = React.useState('');
+  //** Here we synchronise the browsers local storage with React State */
+  //** We use the local storage to persist the search term - see the handle function below*/
+  const [searchTerm, setSearchTerm] = React.useState(
+    localStorage.getItem('search') || 'React');
 
 
   const stories = [
@@ -58,6 +61,9 @@ const App = () => {
     //** D - and 'calls back' to the place it was introduced */
     // console.log(event.target.value);
     setSearchTerm(event.target.value);
+    //** Here we use the local storage to store the search term */
+    //**  */
+    localStorage.setItem('search', event.target.value);
   }
 
   const searchedStories = stories.filter((story) =>
