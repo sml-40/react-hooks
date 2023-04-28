@@ -3,18 +3,23 @@ import List from './components/List';
 import Search from './components/Search';
 
 //** Custom Hook */
+//** A custom hook follows two conventions of Reacts built-in hooks here */
+//** 1. The naming convention - It starts with the word 'use' */
+//** 2. The return values are returned as an array */
+//** Another goal of the custom hook should be reusability */
 const useStorageState = (initialState) => {
-  const [searchTerm, setSearchTerm] = React.useState(
-    localStorage.getItem('search') || initialState
+  //** adjusting the internal names more generic for reusability */
+  const [value, setValue] = React.useState(
+    localStorage.getItem('value') || initialState
   );
 
   //** React useEffect Hook */
   React.useEffect(() => {
     //** Here we use the local storage to store the search term */
-    localStorage.setItem('search', searchTerm);
-  }, [searchTerm]);
+    localStorage.setItem('value', value);
+  }, [value]);
 
-  return [searchTerm, setSearchTerm];
+  return [value, setValue];
 };
   
 
