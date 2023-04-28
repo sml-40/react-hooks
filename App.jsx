@@ -10,6 +10,17 @@ const App = () => {
   //** We use the local storage to persist the search term - see the handle function below*/
   const [searchTerm, setSearchTerm] = React.useState(
     localStorage.getItem('search') || 'React');
+  
+  //** React useEffect Hook */
+  //** The useEffect Hook is a function that takes two arguments */
+  //** The first argument is a function that will be called when the component renders */
+  //** The second argument is an array of dependencies */
+  //** The function passed as the first argument is called the effect */
+  //** The effect is called after the component renders */
+  React.useEffect(() => {
+    //** Here we use the local storage to store the search term */
+    localStorage.setItem('search', searchTerm);
+  }, [searchTerm]);
 
 
   const stories = [
@@ -62,9 +73,9 @@ const App = () => {
     // console.log(event.target.value);
     setSearchTerm(event.target.value);
     //** Here we use the local storage to store the search term */
-    //**  */
-    localStorage.setItem('search', event.target.value);
-  }
+    //** Flaw - the handler function should mostly be concerned with updating the state but it has a side effect now, so if we use the setSearchTerm state updater elsewhere in app it could it could break the feature causing bugs */
+    // localStorage.setItem('search', event.target.value);
+  };
 
   const searchedStories = stories.filter((story) =>
     story.title.toLowerCase().includes(searchTerm.toLowerCase())
