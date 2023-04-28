@@ -2,25 +2,40 @@ import * as React from 'react';
 import List from './components/List';
 import Search from './components/Search';
 
+//** Custom Hook */
+const useStorageState = () => {
+  const [searchTerm, setSearchTerm] = React.useState(
+    localStorage.getItem('search') || ''
+  );
+
+  //** React useEffect Hook */
+  React.useEffect(() => {
+    //** Here we use the local storage to store the search term */
+    localStorage.setItem('search', searchTerm);
+  }, [searchTerm]);
+};
+  
+
 const App = () => {
 
   console.log('App renders');
 
   //** Here we synchronise the browsers local storage with React State */
   //** We use the local storage to persist the search term - see the handle function below*/
-  const [searchTerm, setSearchTerm] = React.useState(
-    localStorage.getItem('search') || 'React');
-  
+  const [searchTerm, setSearchTerm] = useStorageState('React');
+
+
   //** React useEffect Hook */
   //** The useEffect Hook is a function that takes two arguments */
-  //** The first argument is a function that will be called when the component renders */
-  //** The second argument is an array of dependencies */
-  //** The function passed as the first argument is called the effect */
-  //** The effect is called after the component renders */
-  React.useEffect(() => {
-    //** Here we use the local storage to store the search term */
-    localStorage.setItem('search', searchTerm);
-  }, [searchTerm]);
+  //** The first argument is a function that runs our side effect */
+  //** The second argument is dependency array of variable */
+  //** If one of these variables changes, the function for the side-effect is called */
+  //** In our case, the function is called everytime the searchTerm changes */
+  //** The function is also called when the component has rendered for the first time */
+  // React.useEffect(() => {
+  //   //** Here we use the local storage to store the search term */
+  //   localStorage.setItem('search', searchTerm);
+  // }, [searchTerm]);
 
 
   const stories = [
