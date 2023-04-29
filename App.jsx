@@ -7,7 +7,7 @@ import Search from './components/Search';
 //** 1. The naming convention - It starts with the word 'use' */
 //** 2. The return values are returned as an array */
 //** Another goal of the custom hook should be reusability */
-const useStorageState = (initialState) => {
+const useStorageState = (key, initialState) => {
   //** adjusting the internal names more generic for reusability */
   const [value, setValue] = React.useState(
     localStorage.getItem('value') || initialState
@@ -16,8 +16,12 @@ const useStorageState = (initialState) => {
   //** React useEffect Hook */
   React.useEffect(() => {
     //** Here we use the local storage to store the search term */
-    localStorage.setItem('value', value);
-  }, [value]);
+    //** setting a local storage item with the key 'key' which is passed as an argument to the custom hook */
+    //** also passing the current value of the state */
+    localStorage.setItem(key, value);
+  }, [value, key]);
+  //** at [value, key] we're telling React to re-run the effect whenevr value or key changes */
+  //** this ensures that the local storage item is always kept in sync with the current state value */
 
   return [value, setValue];
 };
@@ -29,7 +33,7 @@ const App = () => {
 
   //** Here we synchronise the browsers local storage with React State */
   //** We use the local storage to persist the search term - see the handle function below*/
-  const [searchTerm, setSearchTerm] = useStorageState('React');
+  const [searchTerm, setSearchTerm] = useStorageState('search', 'React');
 
 
   //** React useEffect Hook */
