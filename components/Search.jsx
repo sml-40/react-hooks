@@ -9,8 +9,8 @@ const Search = ({ search, onSearch }) => (
     /* C - is executed in seach component as callback handler */
     // props.onSearch(event);
   // };
-
-    <div>
+//** React.fragment like a container element to render top-level elements side-by-side */
+    <>
       <label htmlFor="search">Search: </label>
       <input
         id="search"
@@ -18,7 +18,7 @@ const Search = ({ search, onSearch }) => (
         value={search}
         onChange={onSearch} />
       {/* <p>Search Term: <strong>{searchTerm}</strong></p> */}
-    </div>
+    </>
   );
 
 export default Search;
