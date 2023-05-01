@@ -1,6 +1,6 @@
 import * as React from 'react';
  //** function - concise body instead of block body when we do object destructuring of props object*/
-const Search = ({ search, onSearch }) => (
+const InputWithLabel = ({ id, label, value, onInputChange }) => (
   // const { search, onSearch } = props;
 
   // console.log('Search renders')
@@ -11,14 +11,15 @@ const Search = ({ search, onSearch }) => (
   // };
 //** React.fragment like a container element to render top-level elements side-by-side */
     <>
-      <label htmlFor="search">Search: </label>
+    <label htmlFor={id}>{label}</label>
+    &nbsp;
       <input
-        id="search"
+        id={id}
         type="text"
-        value={search}
-        onChange={onSearch} />
+        value={value}
+        onChange={onInputChange} />
       {/* <p>Search Term: <strong>{searchTerm}</strong></p> */}
     </>
   );
 
-export default Search;
+export default InputWithLabel;

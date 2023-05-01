@@ -1,6 +1,6 @@
 import * as React from 'react';
 import List from './components/List';
-import Search from './components/Search';
+import InputWithLabel from './components/Search';
 
 //** Custom Hook */
 //** A custom hook follows two conventions of Reacts built-in hooks here */
@@ -111,7 +111,12 @@ const App = () => {
     <div>
       <h1>My Hacker Stories</h1>
       {/* /* B - the callback handler gets passed as a prop to another component */}
-      <Search search={ searchTerm } onSearch={ handleSearch } /> 
+      <InputWithLabel
+        id="search"
+        label="Search"
+        value={searchTerm}
+        onInputChange={handleSearch}
+      /> 
 
       <hr />
      
