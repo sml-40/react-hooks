@@ -1,12 +1,13 @@
 import * as React from 'react';
  //** function - concise body instead of block body when we do object destructuring of props object*/
  //** With the changes below, passing the props from the app comp, we have now made a specialisedsearch component into a more reusable, generalised comp */
+ //** with the React children prop, we can compose React components into each other */
 const InputWithLabel = ({
   id,
-  label,
   value,
   type = 'text',
-  onInputChange
+  onInputChange,
+  children,
 }) => (
   // const { search, onSearch } = props;
 
@@ -18,7 +19,7 @@ const InputWithLabel = ({
   // };
 //** React.fragment like a container element to render top-level elements side-by-side */
     <>
-    <label htmlFor={id}>{label}</label>
+    <label htmlFor={id}>{children}</label>
     &nbsp;
     <input
       id={id}

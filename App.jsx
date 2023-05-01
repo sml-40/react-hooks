@@ -113,10 +113,12 @@ const App = () => {
       {/* /* B - the callback handler gets passed as a prop to another component */}
       <InputWithLabel
         id="search"
-        label="Search"
+        label="Whatever you want to search for:"
         value={searchTerm}
         onInputChange={handleSearch}
-      /> 
+      > 
+        <strong>Search:</strong>
+      </InputWithLabel>
 
       <hr />
      
